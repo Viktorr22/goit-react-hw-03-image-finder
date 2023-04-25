@@ -6,3 +6,4 @@ export * from 'components/Loader/Loader';
 export * from 'components/Modal/Modal';
 export * from 'components/Searchbar/Searchbar';
 export * from 'components/App/App.styled';
+export * from 'components/Api';
