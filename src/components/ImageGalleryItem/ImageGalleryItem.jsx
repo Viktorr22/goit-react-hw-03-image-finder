@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Component, createRef } from 'react';
 import { ImageGalleryItem, ImageGalleryImage } from './ImageGalleryItem.styled';
 import { Modal } from 'components';
@@ -39,3 +40,9 @@ export class ImageGalleryItemBox extends Component {
     );
   }
 }
+
+ImageGalleryItemBox.propTypes = {
+  imageListUrl: PropTypes.string.isRequired,
+  isAnchor: PropTypes.bool.isRequired,
+  imageModal: PropTypes.string.isRequired,
+};
