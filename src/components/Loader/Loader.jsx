@@ -10,7 +10,7 @@ export function Loader() {
         color="green"
         ariaLabel="loading"
         wrapperStyle
-        wrapperClass
+        // wrapperClass
       />
       <h1>Загружаем...</h1>
     </div>

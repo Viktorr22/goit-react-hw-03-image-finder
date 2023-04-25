@@ -7,12 +7,6 @@ export class ImageGalleryItemBox extends Component {
     showModal: false,
   };
 
-  togleModal = () => {
-    this.setState(({ showModal }) => ({
-      showModal: !showModal,
-    }));
-  };
-
   liRef = createRef();
 
   componentDidMount() {
@@ -25,47 +19,23 @@ export class ImageGalleryItemBox extends Component {
     });
   }
 
+  togleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
+  };
+
   render() {
     const { imageListUrl, isAnchor, imageModal } = this.props;
+    const { togleModal, liRef } = this;
+    const { showModal } = this.state;
     return (
       <>
-        <ImageGalleryItem
-          ref={isAnchor ? this.liRef : null}
-          onClick={this.togleModal}
-        >
+        <ImageGalleryItem ref={isAnchor ? liRef : null} onClick={togleModal}>
           <ImageGalleryImage src={imageListUrl} alt="" />
         </ImageGalleryItem>
-        {this.state.showModal && (
-          <Modal onClose={this.togleModal} largeImage={imageModal} />
-        )}
+        {showModal && <Modal onClose={togleModal} largeImage={imageModal} />}
       </>
     );
   }
 }
-
-// export class ImageGalleryItemBox extends Component {
-//   state = {
-//     showModal: false,
-//   };
-
-//   togleModal = () => {
-//     this.setState(({ showModal }) => ({
-//       showModal: !showModal,
-//     }));
-//   };
-
-//   render() {
-//     const { togleModal } = this;
-//     const { imageListUrl, imageModal } = this.props;
-//     return (
-//       <>
-//         <ImageGalleryItem onClick={togleModal}>
-//           <ImageGalleryImage src={imageListUrl} alt="" />
-//         </ImageGalleryItem>
-//         {this.state.showModal && (
-//           <Modal onClose={togleModal} largeImage={imageModal} />
-//         )}
-//       </>
-//     );
-//   }
-// }
