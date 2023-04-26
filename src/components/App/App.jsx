@@ -20,12 +20,11 @@ export class App extends Component {
   };
 
   componentDidUpdate(_, prevState) {
-    if (
-      prevState.query !== this.state.query ||
-      prevState.page !== this.state.page
-    ) {
+    const { query, page } = this.state;
+
+    if (prevState.query !== query || prevState.page !== page) {
       this.setState({ total: 0, loading: true, error: '' });
-      fetchPicture(this.state.query, this.state.page)
+      fetchPicture(query, page)
         .then(({ total, hits }) => {
           const images = hits.map(
             ({ id, webformatURL, largeImageURL }, idx) => ({
